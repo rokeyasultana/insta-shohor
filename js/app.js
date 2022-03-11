@@ -5,6 +5,7 @@ const reportedPostsId = [];
 
 const getLikedPosts = () => {
     return posts.filter((post) => likedPostsId.includes(post.id));
+    
 };
 
 const getReportedPosts = () => {
@@ -22,8 +23,9 @@ const addToLiked = (id) => {
 
 const reportPost = (id) => {
     reportedPostsId.push(id);
-    const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
+    const remainingPosts = posts.filter((post) =>!reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
+    
 };
 
 const displayContent = (text) => {
@@ -54,6 +56,7 @@ const createPost = (post) => {
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
+    console.log(post);
     div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
@@ -62,7 +65,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -120,16 +123,20 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
-                      </a>
-                      ${post.comments?.text}
+                      ${post.comments[0].user}
+                     
+                         </a>
+                         ${post.comments[0].text}
+                     
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
                 </div>
               </div>
       `;
+     
     return div;
+   
 };
 
 const showPosts = (posts) => {
@@ -147,14 +154,19 @@ const displayLikedPosts = () => {
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
+       
     });
+  
 };
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
+     console.log(reportedPosts);
     reportedPosts.forEach((post) => {
         const div = createPost(post);
-        document.getElementById( "reported" ).appendChild(div);
+       document.getElementById( "reported" ).appendChild(div);
+       
+      
     });
 };
 
