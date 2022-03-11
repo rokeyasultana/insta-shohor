@@ -28,6 +28,8 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
 
     <body>
@@ -56,10 +58,10 @@
                         </li>
 
                         <li class="nav-link active" role="button" onclick="switchTab( 'liked' )">
+                           
                             <i class="fa-solid fa-heart text-danger"></i>
                         </li>
-
-                        <li class="nav-link active" role="button" onclick="switchTab( 'reported' )">
+                    <li class="nav-link active" role="button" onclick="switchTab( 'reported' )">
                             <i class="fa-solid fa-eye-slash"></i>
                         </li>
                     </ul>
@@ -77,6 +79,31 @@
                 <h1>Reported posts</h1>
             </div>
         </main>
+
+        <!-- FAQ -->
+        <section >
+            <div class="card-group">
+                <div class="card">
+                  
+                  <div class="card-body">
+                    <h5 class="card-title">How does javascript works?</h5>
+                    <p class="card-text"></p>
+                    
+                  </div>
+                </div>
+                <div class="card">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title">Difference between Localstorage and Sessionstorage?</h5>
+                    <p class="card-text">Main difference between local storage & session storage are: user needs to delete data by manually in local storage. In session storage data is deleted automatically after closing browser & tabs. Local storage works for every tab. It doesn’t work for a specific tab. Local storage doesn’t work for specific tab rather it was for every tab. But session storage works for a specific tab and data clears away after closing the tab.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                
+              </div>
+
+        </section>
+
         <footer></footer>
 
         <!-- add javascript  file  -->

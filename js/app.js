@@ -5,7 +5,8 @@ const reportedPostsId = [];
 
 const getLikedPosts = () => {
     return posts.filter((post) => likedPostsId.includes(post.id));
-    
+  
+
 };
 
 const getReportedPosts = () => {
@@ -19,12 +20,14 @@ const isLiked = (id) => {
 const addToLiked = (id) => {
     likedPostsId.push(id); 
     showPosts(posts);
+
 };
 
 const reportPost = (id) => {
     reportedPostsId.push(id);
     const remainingPosts = posts.filter((post) =>!reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
+  
     
 };
 
@@ -41,8 +44,9 @@ const switchTab = (id) => {
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
-
+        
         displayLikedPosts();
+        
     } else {
         document.getElementById( "reported" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
@@ -50,13 +54,13 @@ const switchTab = (id) => {
 
         displayReportedPosts();
     }
+
 };
 
 const createPost = (post) => {
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
-    console.log(post);
     div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
@@ -101,6 +105,7 @@ const createPost = (post) => {
                   <button class="post__button post__button--align-right" onclick="reportPost(${
                       post.id
                   })">
+
                     <i class="fa-solid fa-ban"></i>
                   </button>
                 </div>
@@ -134,34 +139,35 @@ const createPost = (post) => {
                 </div>
               </div>
       `;
-     
+   
     return div;
    
-};
+}; 
 
 const showPosts = (posts) => {
     const productsContainer = document.getElementById( "posts" );
     productsContainer.innerHTML = "";
-
     posts.forEach((post) => {
         const div = createPost(post);
         productsContainer.appendChild(div);
+        
     });
 };
 
 const displayLikedPosts = () => {
+  document.getElementById( "liked" ).innerHTML =`<h1>Liked posts</h1>`;
     const likedPosts = getLikedPosts();
-    likedPosts.forEach((post) => {
-        const div = createPost(post);
-        document.getElementById( "liked" ).appendChild(div);
-       
+     likedPosts.forEach((post) => {
+      const div = createPost(post);  
+ document.getElementById( "liked" ).appendChild(div);
+      
     });
   
 };
 
 const displayReportedPosts = () => {
+  document.getElementById( "reported" ).innerHTML =`<h1>Reported posts</h1>`
     const reportedPosts = getReportedPosts();
-     console.log(reportedPosts);
     reportedPosts.forEach((post) => {
         const div = createPost(post);
        document.getElementById( "reported" ).appendChild(div);
